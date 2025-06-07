@@ -7,5 +7,4 @@ export interface ModalProps {
   runFunctions?: boolean;
   id?: string;
   bookmarkId?: string;
-  fromUrl?: boolean;
 }
