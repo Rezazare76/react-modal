@@ -23,7 +23,6 @@ const Modal: FC<ModalProps> = ({
   const bodyRef = useRef<HTMLElement | null>(
     typeof window !== "undefined" ? document.body : null
   );
-
   const clearBookmark = useCallback(() => {
     if (!bookmarkId) return;
     router.back();
@@ -64,7 +63,7 @@ const Modal: FC<ModalProps> = ({
   useEffect(() => {
     if (bookmarkId && showModal === "open") {
       window.location.hash = bookmarkId;
-    } else if (bookmarkId && (showModal === "close" || showModal === "hide")) {
+    } else if (bookmarkId && showModal === "hide") {
       clearBookmark();
     }
     const handlePopState = () => {
@@ -99,7 +98,6 @@ const Modal: FC<ModalProps> = ({
             {children}
           </div>
         </article>
-
         {/* dark glass background */}
         <div
           className={` ${

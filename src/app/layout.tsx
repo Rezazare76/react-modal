@@ -42,7 +42,13 @@ export default function RootLayout({
               height={30}
             />
           </Link>
-          <Link href={""} target="_blank" title="Rezazare76 medium">
+          <Link
+            href={
+              "https://medium.com/@rezazare2088/react-nextjs-modal-tutorial-ccc2a8ab9af8"
+            }
+            target="_blank"
+            title="Rezazare76 medium"
+          >
             <Image src="/medium.svg" alt="medium icon" width={30} height={30} />
           </Link>
         </nav>

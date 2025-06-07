@@ -9,8 +9,8 @@ const Modal = lazy(() => import("@/components/modal/Modal"));
 export default function Home() {
   //state for show modal
   const [showRegularModal, setShowRegularModal] = useState<
-    "open" | "hide" | "close"
-  >("close");
+    "open" | "hide" | null
+  >(null);
   //state for show modalContainer
   const [showModalContainer, setShowModalContainer] =
     useState<modalsContainerSectionsType>(null);
@@ -48,10 +48,10 @@ export default function Home() {
         </article>
       </section>
       {/* regular modal */}
-      {showRegularModal != "close" && (
+      {showRegularModal && (
         <Suspense>
           <Modal
-            closeClick={() => setShowRegularModal("close")}
+            closeClick={() => setShowRegularModal(null)}
             showModal={showRegularModal}
             bookmarkId="modal-regular"
           >
