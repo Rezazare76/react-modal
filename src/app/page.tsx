@@ -1,103 +1,93 @@
+"use client";
 import Image from "next/image";
+import { lazy, Suspense, useState } from "react";
 
+import ModalsContainer from "@/feature/modalContainer/ModalContainer";
+import { modalsContainerSectionsType } from "@/feature/modalContainer/modalContainer.type";
+
+const Modal = lazy(() => import("@/components/modal/Modal"));
 export default function Home() {
+  //state for show modal
+  const [showRegularModal, setShowRegularModal] = useState<
+    "open" | "hide" | "close"
+  >("close");
+  //state for show modalContainer
+  const [showModalContainer, setShowModalContainer] =
+    useState<modalsContainerSectionsType>(null);
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+    <>
+      <section className="h-screen flex items-center justify-center">
+        <article className="bg-white w-[300px] h-[300px] rounded-2xl flex flex-col items-center justify-center shadow-[0_5px_43px_-12px_#00000040] inset-shadow-sm inset-shadow-transparent hover:inset-shadow-amber-300  transition-all border-b-8 border-amber-300 duration-500">
+          <button
+            className="bg-amber-300 w-[124px] rounded-lg h-10 text-white cursor-pointer active:scale-95 transition-all"
+            title="open regular modal"
+            onClick={() => setShowRegularModal("open")}
+          >
+            modal
+          </button>
+        </article>
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+        <article className="bg-white w-[300px] h-[300px] rounded-2xl flex flex-col items-center justify-center shadow-[0_5px_43px_-12px_#00000040] inset-shadow-sm inset-shadow-transparent hover:inset-shadow-amber-700  transition-all border-b-8 border-amber-700 mx-5  duration-500">
+          <button
+            className="bg-amber-700 w-[124px] rounded-lg h-8 text-white cursor-pointer active:scale-95 transition-all"
+            title="open login modal"
+            onClick={() => setShowModalContainer("login")}
           >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+            Login
+          </button>
+        </article>
+
+        <article className="bg-white w-[300px] h-[300px] rounded-2xl flex flex-col items-center justify-center shadow-[0_5px_43px_-12px_#00000040] inset-shadow-sm inset-shadow-transparent hover:inset-shadow-emerald-500 transition-all border-b-8 border-b-emerald-500  mx-5  duration-500">
+          <button
+            className="bg-emerald-500 w-[124px] rounded-lg h-8 text-white cursor-pointer active:scale-95 transition-all"
+            title="open sign up modal"
+            onClick={() => setShowModalContainer("sign-up")}
           >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
+            Sign Up
+          </button>
+        </article>
+      </section>
+      {/* regular modal */}
+      {showRegularModal != "close" && (
+        <Suspense>
+          <Modal
+            closeClick={() => setShowRegularModal("close")}
+            showModal={showRegularModal}
+            bookmarkId="modal-regular"
+          >
+            <div className="bg-white flex flex-col w-[300px] rounded-2xl h-[300px]">
+              <button
+                className="  m-[10px]  cursor-pointer self-end "
+                onClick={() => setShowRegularModal("hide")}
+              >
+                <Image
+                  src="/close-line.svg"
+                  width={30}
+                  height={30}
+                  alt="close icon"
+                />
+              </button>
+              <div className="w-full grow flex">
+                <button
+                  className="bg-red-500 m-auto text-white w-[100px] rounded-sm py-2  cursor-pointer self-end "
+                  onClick={() => setShowRegularModal("hide")}
+                >
+                  close
+                </button>
+              </div>
+            </div>
+          </Modal>
+        </Suspense>
+      )}
+      {/* modalContainer */}
+      {showModalContainer && (
+        <Suspense>
+          <ModalsContainer
+            sectionProps={showModalContainer}
+            setSectionProps={setShowModalContainer}
           />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+        </Suspense>
+      )}
+    </>
   );
 }

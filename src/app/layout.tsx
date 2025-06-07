@@ -1,16 +1,8 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+import Image from "next/image";
+import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -24,9 +16,37 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+      <body className="min-h-[200vh] bg-white">
+        <nav className="flex items-center gap-3 fixed top-5 left-5">
+          <Link
+            href={"https://github.com/Rezazare76/react-modal"}
+            target="_blank"
+            title="Rezazare76 github"
+          >
+            <Image
+              src="/github-mark.svg"
+              alt="github icon"
+              width={30}
+              height={30}
+            />
+          </Link>
+          <Link
+            href={"https://www.linkedin.com/in/rezazare76"}
+            target="_blank"
+            title="Rezazare76 linkedin"
+          >
+            <Image
+              src="/linkedin.svg"
+              alt="linkedin icon"
+              width={30}
+              height={30}
+            />
+          </Link>
+          <Link href={""} target="_blank" title="Rezazare76 medium">
+            <Image src="/medium.svg" alt="medium icon" width={30} height={30} />
+          </Link>
+        </nav>
+
         {children}
       </body>
     </html>
