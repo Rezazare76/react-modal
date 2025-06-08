@@ -16,8 +16,8 @@ export default function Home() {
     useState<modalsContainerSectionsType>(null);
   return (
     <>
-      <section className="h-screen flex items-center justify-center">
-        <article className="bg-white w-[300px] h-[300px] rounded-2xl flex flex-col items-center justify-center shadow-[0_5px_43px_-12px_#00000040] inset-shadow-sm inset-shadow-transparent hover:inset-shadow-amber-300  transition-all border-b-8 border-amber-300 duration-500">
+      <section className="h-screen grid lg:grid-cols-3 items-center justify-items-center max-w-[1024px] mx-auto pt-5 px-5">
+        <article className="bg-white w-full min-[350px]:w-[300px] h-[300px] rounded-2xl flex flex-col items-center justify-center shadow-[0_5px_43px_-12px_#00000040] inset-shadow-sm inset-shadow-transparent hover:inset-shadow-amber-300  transition-all border-b-8 border-amber-300 duration-500">
           <button
             className="bg-amber-300 w-[124px] rounded-lg h-10 text-white cursor-pointer active:scale-95 transition-all"
             title="open regular modal"
@@ -27,7 +27,7 @@ export default function Home() {
           </button>
         </article>
 
-        <article className="bg-white w-[300px] h-[300px] rounded-2xl flex flex-col items-center justify-center shadow-[0_5px_43px_-12px_#00000040] inset-shadow-sm inset-shadow-transparent hover:inset-shadow-amber-700  transition-all border-b-8 border-amber-700 mx-5  duration-500">
+        <article className="bg-white w-full min-[350px]:w-[300px] h-[300px] rounded-2xl flex flex-col items-center justify-center shadow-[0_5px_43px_-12px_#00000040] inset-shadow-sm inset-shadow-transparent hover:inset-shadow-amber-700  transition-all border-b-8 border-amber-700   duration-500">
           <button
             className="bg-amber-700 w-[124px] rounded-lg h-8 text-white cursor-pointer active:scale-95 transition-all"
             title="open login modal"
@@ -37,7 +37,7 @@ export default function Home() {
           </button>
         </article>
 
-        <article className="bg-white w-[300px] h-[300px] rounded-2xl flex flex-col items-center justify-center shadow-[0_5px_43px_-12px_#00000040] inset-shadow-sm inset-shadow-transparent hover:inset-shadow-emerald-500 transition-all border-b-8 border-b-emerald-500  mx-5  duration-500">
+        <article className="bg-white w-full min-[350px]:w-[300px] h-[300px] rounded-2xl flex flex-col items-center justify-center shadow-[0_5px_43px_-12px_#00000040] inset-shadow-sm inset-shadow-transparent hover:inset-shadow-emerald-500 transition-all border-b-8 border-b-emerald-500    duration-500">
           <button
             className="bg-emerald-500 w-[124px] rounded-lg h-8 text-white cursor-pointer active:scale-95 transition-all"
             title="open sign up modal"
@@ -55,7 +55,7 @@ export default function Home() {
             showModal={showRegularModal}
             bookmarkId="modal-regular"
           >
-            <div className="bg-white flex flex-col w-[300px] rounded-2xl h-[300px]">
+            <div className="bg-white flex flex-col w-[80vw] min-[350px]:w-[300px] rounded-2xl h-[300px]">
               <button
                 className="  m-[10px]  cursor-pointer self-end "
                 onClick={() => setShowRegularModal("hide")}

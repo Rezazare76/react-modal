@@ -38,7 +38,7 @@ const ModalsContainer = ({
       runFunctions
       bookmarkId={`modal-container-${section}`}
     >
-      <div className="bg-white flex flex-col w-[300px] rounded-2xl h-[300px]">
+      <div className="bg-white flex flex-col w-[80vw] min-[350px]:w-[300px] rounded-2xl h-[300px]">
         <button
           className="m-[10px] cursor-pointer self-end"
           onClick={() => setShowModal("hide")}
