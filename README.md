@@ -55,9 +55,9 @@ Then open [http://localhost:3000](http://localhost:3000)
 
 ---
 
-## 🌐 Live Demo (Optional)
+## 🌐 Live Demo
 
-> Deploy this project to [Vercel](https://react-modal-woad-five.vercel.app/) and add your link here!
+> Deploy this project to [Vercel](https://react-modal-woad-five.vercel.app/)
 
 ---
 
